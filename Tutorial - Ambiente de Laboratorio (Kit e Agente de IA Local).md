@@ -1,4 +1,4 @@
-# Tutorial — Ambiente de Laboratório e Agente de IA (CAI, 100% local, Ubuntu Linux)
+# Tutorial - Ambiente de Laboratório e Agente de IA (CAI, 100% local, Ubuntu Linux)
 
 *Este documento substitui o tutorial de setup anterior. Cobre: (1) subir o kit com os dois sistemas do trabalho; (2) verificar que cada um está de pé; (3) opcionalmente, instalar e testar o agente CAI com modelo local via Ollama. A ordem de ataques e os critérios de correção estão no "Gabarito do Professor" (documento à parte, não distribuído aos alunos).*
 
