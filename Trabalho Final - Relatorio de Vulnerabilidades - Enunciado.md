@@ -1,4 +1,4 @@
-# Trabalho Final — Segurança em Computação
+# Trabalho Final - Segurança em Computação
 ## Prof. Rodolfo Villaça
 ## Relatório de execução, evidências e achados em dois sistemas propositalmente vulneráveis
 
