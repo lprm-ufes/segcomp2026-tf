@@ -102,5 +102,4 @@
 
 *Um parágrafo curto ou 0,5 página. O que foi encontrado, no geral, e as principais limitações do processo de teste (tempo, ferramentas, agente).*
 
-[ ]
 
