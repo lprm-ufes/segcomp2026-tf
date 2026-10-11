@@ -95,9 +95,9 @@ Espera-se uma descrição em texto do endpoint de diagnóstico.
 
 ---
 
-## 3. (Opcional, recomendado) Agente de IA — CAI com modelo local
+## 3. (Opcional, porém recomendado) Agente de IA - CAI com modelo local
 
-Esta seção é **opcional**. O uso de agente é recomendado por valor didático e profissional, mas o trabalho pode ser feito inteiramente com ferramentas manuais (curl, um proxy HTTP, nmap etc.) — ver enunciado.
+Esta seção é **opcional**. O uso de agente é recomendado por valor didático e profissional, mas o trabalho pode ser feito inteiramente com ferramentas manuais (curl, um proxy HTTP, nmap etc.): ver enunciado.
 
 **Recomendação desta seção: modelo local via Ollama**, para evitar mandar qualquer tentativa de teste de intrusão para fora da máquina do grupo. É o caminho padrão e o que as seções 3.2 a 3.7 cobrem. Para quem tem hardware muito limitado, a seção 3.8 traz a alternativa avançada de usar um modelo hospedado (Groq) — nesse caso, documente isso explicitamente no relatório (ver enunciado, seção 4).
 
@@ -106,8 +106,8 @@ Esta seção é **opcional**. O uso de agente é recomendado por valor didático
 **Leia isto antes de instalar.** CAI com um modelo local **depende fortemente de ter uma GPU com VRAM suficiente** para carregar o modelo. Rodar em CPU funciona apenas para modelos pequenos (na faixa de 7-8 bilhões de parâmetros) e, mesmo assim, de forma lenta e poucas vezes confiável.
 
 - **Com GPU dedicada (recomendado):** modelos de 7B a 8B rodam com inferência rápida (segundos por resposta). Modelos maiores (14B ou mais) também podem funcionar bem, desde que a VRAM da placa comporte o modelo.
-- **Sem GPU dedicada (só CPU):** use no máximo um modelo de 7-8B (ex.: `qwen2.5:7b`). Mesmo assim, espere respostas de dezenas de segundos a poucos minutos cada, e falhas frequentes de ferramenta (ver seção 3.6). **Modelos acima de 8B em CPU tendem a estourar o tempo limite de resposta do framework antes mesmo de errar ou acertar a técnica** — isso foi observado de forma reproduzível em testes anteriores (um modelo de 14B em CPU derrubou a sessão por timeout, mesmo com bastante RAM livre). Não é um problema de memória disponível; é o processamento em CPU sendo lento demais.
-- **Se seu grupo não tem GPU dedicada:** está tudo bem — o trabalho não exige sucesso técnico do agente, e um modelo pequeno travando ou alucinando é, em si, um resultado válido para documentar. Considere também usar o agente só em parte dos testes (por exemplo, reconhecimento) e fazer o restante manualmente.
+- **Sem GPU dedicada (só CPU):** use no máximo um modelo de 7-8B (ex.: `qwen2.5:7b`). Mesmo assim, espere respostas de dezenas de segundos a poucos minutos cada, e falhas frequentes de ferramenta (ver seção 3.6). **Modelos acima de 8B em CPU tendem a estourar o tempo limite de resposta do framework antes mesmo de errar ou acertar a técnica**. Não é um problema de memória disponível; é o processamento em CPU sendo lento demais.
+- **Se seu grupo não tem GPU dedicada:** está tudo bem. O trabalho não exige sucesso técnico do agente, e um modelo pequeno travando ou alucinando é, em si, um resultado válido para documentar. Considere também usar o agente só em parte dos testes (por exemplo, reconhecimento) e fazer o restante manualmente.
 
 ### 3.2 Instalar o Ollama e baixar um modelo local
 
@@ -119,7 +119,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 ollama pull qwen2.5:7b
 ```
 
-Se tiver GPU dedicada com VRAM suficiente, pode testar um modelo maior (ex.: `qwen2.5:14b`) e comparar os resultados — mas sem GPU, fique no 7-8B.
+Se tiver GPU dedicada com VRAM suficiente, pode testar um modelo maior (ex.: `qwen2.5:14b` ou maiores). Sem GPU, fique no 7-8B.
 
 ### 3.3 Instalar o framework do agente (CAI)
 
@@ -157,13 +157,13 @@ O persona padrão do CAI é voltado para CTF/captura de flag e tende a rodar com
 /agent select web_pentester_agent
 ```
 
-para os dois alvos (Juice Shop, SecNote e NetCheck — todos web).
+para os dois alvos (Juice Shop, SecNote e NetCheck).
 
-A troca de persona não é lembrada entre sessões — repita sempre que reabrir o CAI.
+A troca de persona não é lembrada entre sessões: repita sempre que reabrir o CAI.
 
 ### 3.5 Aviso de segurança: o shell do agente roda sem sandbox
 
-A ferramenta que o agente usa para executar comandos roda **diretamente na máquina onde o CAI está instalado, sem isolamento** — não é uma sandbox, container ou VM separada. Em testes anteriores, um objetivo mal-especificado levou o agente (pelo viés do persona padrão) a varrer o `$HOME` inteiro à procura de um arquivo de flag.
+A ferramenta que o agente usa para executar comandos roda **diretamente na máquina onde o CAI está instalado, sem isolamento**; não é uma sandbox, container ou VM separada. Em testes anteriores, um objetivo mal-especificado levou o agente (pelo viés do persona padrão) a varrer o `$HOME` inteiro à procura de um arquivo de flag.
 
 - Rode o CAI numa pasta/usuário dedicado ao trabalho, sem outros projetos sensíveis no mesmo `$HOME`.
 - Dê objetivos específicos, sempre apontando para o alvo (`http://127.0.0.1:3000`, `http://127.0.0.1:4000` etc.), nunca "explore o sistema" ou "ache uma flag".
@@ -191,7 +191,7 @@ Run the command "echo hello" and tell me the output.
 
 ### 3.7 Exemplos de objetivo por sistema
 
-Ajuste o endereço conforme o alvo. Repita cada objetivo 2 a 3 vezes — a variação entre execuções é grande em modelos pequenos — e **sempre confira manualmente** (com `curl` ou no navegador) o que o agente relatou, antes de considerar um achado validado.
+Ajuste o endereço conforme o alvo. Repita cada objetivo 2 a 3 vezes pois a variação entre execuções é grande em modelos pequenos, e **sempre confira manualmente** (com `curl` ou no navegador) o que o agente relatou, antes de considerar um achado validado.
 
 **Juice Shop (reconhecimento, para aquecer):**
 ```
@@ -231,9 +231,9 @@ PROMPT_TOOLKIT_NO_CPR=1
 ```
 
 **Ressalvas importantes se optar por essa alternativa:**
-- **Deixa de ser local** — os prompts e (potencialmente) trechos de resposta do alvo trafegam para os servidores da Groq. Se usar essa via, declare isso explicitamente no relatório (ver enunciado, seção 4), e use-a somente contra o ambiente de laboratório isolado do próprio grupo, nunca contra qualquer alvo externo.
-- **O CAI tem um guardrail interno de "prompt injection"** que, por padrão, bloqueia instruções que pareçam um ataque — mesmo vindas do próprio usuário autorizado (ex.: pedir explicitamente um comando com payload de SQL injection pode disparar `🛡️ INPUT SECURITY GUARDRAIL TRIGGERED`). Isso é ainda mais provável ao usar um modelo em nuvem. Para desligar esse guardrail (só faz sentido no seu próprio ambiente de laboratório): `CAI_GUARDRAILS=false` no `.env` — e, se desligar, documente isso e reflita no relatório sobre o que esse bloqueio automático revela.
-- A chave da Groq é obtida em [console.groq.com/keys](https://console.groq.com/keys) — trate como qualquer outra credencial (nunca commitar, ver nota sobre `.gitignore` em 3.3).
+- **Deixa de ser local**: os prompts e (potencialmente) trechos de resposta do alvo trafegam para os servidores da Groq. Se usar essa via, declare isso explicitamente no relatório (ver enunciado, seção 4), e use-a somente contra o ambiente de laboratório isolado do próprio grupo, nunca contra qualquer alvo externo.
+- **O CAI tem um guardrail interno de "prompt injection"** que, por padrão, bloqueia instruções que pareçam um ataque — mesmo vindas do próprio usuário autorizado (ex.: pedir explicitamente um comando com payload de SQL injection pode disparar `🛡️ INPUT SECURITY GUARDRAIL TRIGGERED`). Isso é ainda mais provável ao usar um modelo em nuvem. Para desligar esse guardrail (só faz sentido no seu próprio ambiente de laboratório): `CAI_GUARDRAILS=false` no `.env` e, se desligar, documente isso e reflita no relatório sobre o que esse bloqueio automático revela.
+- A chave da Groq é obtida em [console.groq.com/keys](https://console.groq.com/keys) . Trate como qualquer outra credencial (nunca commitar, ver nota sobre `.gitignore` em 3.3).
 
 ### 3.9 Problemas comuns
 
