@@ -1,7 +1,7 @@
 # Trabalho Final — Segurança em Computação - 2026/2)
 ## Prof. Rodolfo Villaça - rodolfo.villaca@ufes.br
 
-Este repositório reúne os materiais do trabalho final da disciplina **Segurança em Computação**. Em grupos de 2 ou 3 pessoas, os alunos executam testes de segurança em um ambiente controlado, registram evidências de cada tentativa e documentam os achados confirmados em dois sistemas: o **OWASP Juice Shop** e um conjunto de **aplicações vulneráveis dedicadas** (SecNote e NetCheck). O uso de um agente de IA (framework CAI, com modelo local) é recomendado como apoio aos testes, mas é opcional.
+Este repositório reúne os materiais do trabalho final da disciplina **Segurança em Computação**. Em grupos de 2 ou 3 pessoas, os(as) integrantes executam testes de segurança em um ambiente controlado, registram evidências de cada tentativa e documentam os achados confirmados em dois sistemas: o **OWASP Juice Shop** e um conjunto de **aplicações vulneráveis dedicadas** (SecNote e NetCheck). O uso de um agente de IA (framework CAI, com modelo local) é recomendado como apoio aos testes, mas é opcional.
 
 As entregas são um **relatório técnico em PDF** (execução, evidências e achados) e um **vídeo curto** demonstrando o que foi encontrado. Os detalhes completos, tais como objetivo, regras de segurança e ética, formato do relatório e do vídeo, critérios de avaliação e cronograma, estão no enunciado e nos materias complementares listados abaixo.
 
