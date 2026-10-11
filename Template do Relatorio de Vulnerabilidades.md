@@ -7,7 +7,9 @@
 ---
 
 **Grupo:** [nome ou número do grupo]
+
 **Integrantes:** [nome 1 — nome 2 — nome 3]
+
 **Identificador do grupo (GROUP_ID):** [usar o numero de matricula de um dos componentes]
 
 ---
