@@ -10,7 +10,7 @@ As entregas são um **relatório técnico em PDF** (execução, evidências e ac
 | Arquivo | Conteúdo |
 |---|---|
 | [Enunciado](Trabalho%20Final%20-%20Relatorio%20de%20Vulnerabilidades%20-%20Enunciado.md) | O enunciado oficial do trabalho: objetivo, formato de entrega, os dois sistemas a testar, ferramentas e uso de IA, regras de isolamento/ética/segurança, formato do relatório e do vídeo, critérios de avaliação e cronograma sugerido. |
-| [Tutorial do ambiente](Tutorial%20-%20Ambiente%20de%20Laboratorio%20%28Kit%20e%20Agente%20de%20IA%20Local%29.md) | Passo a passo, para Ubuntu Linux, para subir o kit de laboratório com Docker e, opcionalmente, instalar e configurar o agente de IA CAI com modelo local via Ollama (inclui ressalvas de hardware/GPU e uma alternativa opcional de modelo em nuvem). |
+| [Tutorial do ambiente](Tutorial%20-%20Ambiente%20de%20Laboratorio.md) | Passo a passo, para Ubuntu Linux, para subir o kit de laboratório com Docker e, opcionalmente, instalar e configurar o agente de IA CAI com modelo local via Ollama (inclui ressalvas de hardware/GPU e uma alternativa opcional de modelo em nuvem). |
 | [Template do relatório (Markdown)](Template%20do%20Relatorio%20de%20Vulnerabilidades.md) | Modelo do relatório técnico em Markdown, pronto para preencher: identificação e escopo, log de execução dos testes, quadro-resumo e achados detalhados, uso do agente e conclusão. |
 | [lab-kit.zip](lab-kit.zip) | Ambiente de laboratório pronto para uso via `docker compose`: OWASP Juice Shop e as duas aplicações vulneráveis do professor (SecNote e NetCheck), com README próprio de instruções. |
 
